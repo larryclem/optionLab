@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="optionLab">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+      <title>optionLab</title>
+
+      <!-- Styles -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="./assets/css/main.css" >
+      <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+	<div ui-view></div>
+
+	<!-- Scripts -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- Angular -->
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js">
+    </script>
+
+    <!-- UI-Router -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js">
+    </script>
+
+    <!-- App Module & Routes -->
+    <script src="/app.js"></script>
+    <script src="/appRoutes.js"></script>
+
+    <!-- Shared components -->
+    <script src="/shared/navBar/navBarDirective.js"></script>
+
+    <!-- Dashboard components -->
+    <script src="/components/dashboard/dashboardCtrl.js"></script>
+    <script src="/components/dashboard/dashboardService.js"></script>
+
+    <!-- Decide components -->
+    <script src="/components/decide/decideCtrl.js"></script>
+    <script src="/components/decide/decideService.js"></script>
+
+    <!-- Decision components -->
+    <script src="/components/decision/decisionCtrl.js"></script>
+    <script src="/components/decision/decisionService.js"></script>
+
+    <!-- Landing components -->
+    <script src="/components/landing/landingCtrl.js"></script>
+
+</body>
+
+</html>
