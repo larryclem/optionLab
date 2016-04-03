@@ -1,4 +1,4 @@
-var ctrl = require('./userControl')
+var userControl = require('./userControl')
 
 module.exports = function (app) {
 	app.route('/users')

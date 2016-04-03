@@ -19,8 +19,8 @@
   });
 
   //routes
-  require('./features/user/userRoutes')(app);
-  require('./features/decision/decisionRoutes')(app);
+  // require('./features/user/userRoutes')(app);
+  // require('./features/decision/decisionRoutes')(app);
 
   app.listen(port, function() {
       console.log('Listening on ' + port);

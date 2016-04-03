@@ -15,6 +15,6 @@
     }]
   });
 
-  module.exports = mongoose.model('Decision', Decision);
+  module.exports = mongoose.model('Decision', decisionSchema);
 
 // factor.factorName : {type: String, ref: 'Decision'}
