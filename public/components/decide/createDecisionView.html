@@ -1,0 +1,13 @@
+<h1>{{createTitle}}</h1>
+
+<div class="form-group">
+  <label for="ttl">Name your decision:</label>
+  <input type="text" ng-model="decision.title" id="ttl">
+</div>
+
+<div ng-repeat="(i, choice) in decision.choices track by $index">
+  <label for="choiceName"> Option {{$index+1}}:</label>
+  <input type="text" placeholder="choice name" ng-model="decision.choices[i].name" id="choiceName">
+</div>
+
+<a ui-sref="decide.factors">Next</a>
