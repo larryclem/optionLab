@@ -1,11 +1,11 @@
 var User = require('./User')
 var exports = module.exports = {};
 
-exports.creatUser = function (req, res){
-  var test;
+exports.createUser = function (req, res){
+
 };
 
 
 exports.getUser = function (req, res){
-  var test;
+  
 };
