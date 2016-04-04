@@ -1,7 +1,7 @@
 var Decision = require('./Decision')
 var exports = module.exports = {};
 
-exports.creatDecision = function (req, res){
+exports.createDecision = function (req, res){
 
 };
 
