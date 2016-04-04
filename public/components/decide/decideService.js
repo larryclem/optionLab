@@ -1,3 +1,3 @@
-angular.module('optionLab').service('decideService', function(){
-
+angular.module('optionLab').service('decideService', function($http ){
+  this
 });
