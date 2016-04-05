@@ -4,7 +4,11 @@ angular.module('optionLab').controller('decideCtrl', ['$scope', 'decideService',
 
 $scope.decision = {
     title: ''
-  , choices: [{}, {}, {}]
+  , choices: [
+      {choiceName:'', factorGrades: []}
+    , {choiceName:'', factorGrades: []}
+    , {choiceName:'', factorGrades: []}
+  ]
   , factors: [
       {facName:'', weight:0}
     , {facName:'', weight:0}
@@ -13,18 +17,21 @@ $scope.decision = {
 };
 
 //finish this
-// $scope.calculateChoiceGrade = function (decision){
-//
-//   for (var i=0; i<decision.choices.length; i++){
-//     var gradeSum;
-//     decision.choices[i].weightedScore = gradeSum/(decision.choices.factorGrades.length * 100);
-//     for (var j=0; j<decision.choices.factorGrades.length; j++){
-//     (decision.choices.factorGrades[j].grade * decision.factors[j].weight)
-//       += gradeSum;
-//     }
-//   }
-//   return decision;
-// };
+$scope.calculateChoiceGrade = function (decision){
+
+  for (var i=0; i<decision.choices.length; i++){
+    var currentChoice = decision.choices[i];
+    var gradeSum = 0;
+    for (var j=0; j<currentChoice.factorGrades.length; j++){
+
+      gradeSum += (currentChoice.factorGrades[j].grade * decision.factors[j].weight)
+
+    }
+    currentChoice.weightedScore = gradeSum/(currentChoice.factorGrades.length * 100);
+  }
+  console.log('the final decision object is ' + decision);
+  return decision;
+};
 
 console.log($scope.decision);
 

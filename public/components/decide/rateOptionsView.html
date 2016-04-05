@@ -8,7 +8,9 @@
   <div ng-repeat="(j, factor) in decision.factors track by $index">
   <h5>{{decision.factors[j].facName}}</h5>
   <rzslider rz-slider-model="$parent.decision.choices[i].factorGrades[j].grade"
-          rz-slider-options="slider.options"></rzslider>
+      rz-slider-options="slider.options"></rzslider>
+  </div>
 </div>
 
+<button type="button" class="btn btn-default btn-lg"  ng-click="calculateChoiceGrade(decision)">Evaluate!</button>
 <!-- submit fires off calculateChoiceGrade(decision)
