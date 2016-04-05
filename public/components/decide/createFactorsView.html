@@ -1,10 +1,12 @@
 <h1>{{decision.title}}</h1>
 
+<h3>Prioritize the factors that will inform your decision by rating their importance.</h3>
+
 <div ng-repeat="(i, factor) in decision.factors track by $index">
-  <label for="factorName"> Factor {{$index+1}}:</label>
+  <label for="factorName">Factor {{$index+1}}:</label>
   <input type="text" placeholder="factor name" ng-model="decision.factors[i].facName">
   <h5>Importance</h5>
-  <rzslider rz-slider-model="decision.factors[i].importance"
+  <rzslider rz-slider-model="decision.factors[i].weight"
           rz-slider-options="slider.options" id="factorName"></rzslider>
 </div>
 

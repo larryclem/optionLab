@@ -1,11 +1,12 @@
 <h1>{{decision.title}}</h1>
 
+<h3>Grade each option against the influencing factors</h3>
+
 <div ng-repeat="(i, choice) in decision.choices track by $index">
-  <h3>{{decision.choices[i].name}}</h3>
+  <h4>{{decision.choices[i].choiceName}}</h4>
 
   <div ng-repeat="(j, factor) in decision.factors track by $index">
   <h5>{{decision.factors[j].facName}}</h5>
-
   <rzslider rz-slider-model="$parent.decision.choices[i].factorGrades[j].grade"
           rz-slider-options="slider.options"></rzslider>
 </div>

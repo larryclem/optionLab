@@ -1,20 +1,36 @@
 angular.module('optionLab').controller('decideCtrl', ['$scope', 'decideService', function($scope, decideService){
+
 //decision object assembly - this will all be changed
-$scope.createTitle = 'Create Decision'
-$scope.factorTitle = 'Set Factors'
 
-$scope.decision = {};
-$scope.decision.choices = [{}, {}, {}];
-$scope.decision.factors = [{facName:'', importance:0}, {facName:'', importance:0}, {facName:'', importance:0}];
+$scope.decision = {
+    title: ''
+  , choices: [{}, {}, {}]
+  , factors: [
+      {facName:'', weight:0}
+    , {facName:'', weight:0}
+    , {facName:'', weight:0}
+  ]
+};
 
-$scope
+//finish this
+$scope.calculateChoiceGrade = function (decision){
+
+  for (var i=0; i<decision.choices.length; i++){
+    var gradeSum;
+    decision.choices[i].weightedScore = gradeSum/(decision.choices.factorGrades.length * 100);
+    for (var j=0; j<decision.choices.factorGrades.length; j++){
+    (decision.factorGrades[j].grade * decision.factors[j].weight)
+      += gradeSum;
+    }
+  }
+  return decision;
+};
 
 console.log($scope.decision);
 
 //slider implementation
 
 $scope.slider = {
-    value: 50,
     options: {
         floor:0,
         ceil:100,
