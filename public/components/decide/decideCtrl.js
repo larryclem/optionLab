@@ -5,9 +5,9 @@ angular.module('optionLab').controller('decideCtrl', ['$scope', '$state', 'decid
 $scope.decision = {
     title: ''
   , choices: [
-      {choiceName:'', factorGrades: []}
-    , {choiceName:'', factorGrades: []}
-    , {choiceName:'', factorGrades: []}
+      {choiceName:'', factorGrades: [{}, {}, {}]}
+    , {choiceName:'', factorGrades: [{}, {}, {}]}
+    , {choiceName:'', factorGrades: [{}, {}, {}]}
   ]
   , factors: [
       {facName:'', weight:0}
@@ -15,8 +15,6 @@ $scope.decision = {
     , {facName:'', weight:0}
   ]
 };
-
-var possibleTotal = $scope.decision
 
 //calculate weighted average for each grade
 $scope.calculateChoiceGrade = function (decision){
@@ -54,6 +52,16 @@ $scope.deleteDecision = function (){
   decideService.deleteDecision($scope.decision);
 }
 
+//cycle through options in rateOptions view
+$scope.currentOption = 0;
+$scope.nextOption = function(){
+  $scope.currentOption++;
+}
+
+$scope.previousOption = function(){
+  $scope.currentOption--;
+}
+
 //slider implementation
 
 $scope.slider = {
@@ -72,5 +80,13 @@ $scope.slider = {
         }
     }
 };
+
+//sets rate options sliders to 0 on start
+for (var i=0; i<$scope.decision.choices.length; i++){
+  var currentChoice = $scope.decision.choices[i];
+  for (var j=0; j<currentChoice.factorGrades.length; j++){
+    currentChoice.factorGrades[j].grade = 0;
+  }
+}
 
 }]);

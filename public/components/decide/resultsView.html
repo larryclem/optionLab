@@ -5,3 +5,7 @@
 <div ng-repeat="choice in decision.choices | orderBy:'-weightedScore'">
   <h4>{{choice.choiceName}}</h4><span>  {{choice.weightedScore}}%</span>
 </div>
+
+<button type="button" class="btn btn-default btn-lg"  ui-sref="decide.rateOptions">Back</button>
+
+<button type="button" class="btn btn-default btn-lg"  ui-sref="decide.create">Decide again</button>
