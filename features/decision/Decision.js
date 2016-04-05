@@ -1,15 +1,16 @@
   var mongoose = require('mongoose');
 
   var decisionSchema = new mongoose.Schema({
-      name: {type: String, required: true}
+      title: {type: String, required: true}
     , factors: [{
-        factorName: {type: String, required: true}
+        facName: {type: String, required: true}
       , weight: {type: Number, max: 100}
     }]
-    , options: [{
-        optionName: {type: String}
+    , choices: [{
+        choiceName: {type: String}
+      , weightedScore: {type: Number, max: 100}
       , factorGrades: [{
-          factor.factorName: {type: String, ref: 'Decision'}
+          facName: {type: String}
         , grade: {type: Number, required: true, max: 100}
       }]
     }]

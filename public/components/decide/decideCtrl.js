@@ -1,6 +1,6 @@
-angular.module('optionLab').controller('decideCtrl', ['$scope', 'decideService', function($scope, decideService){
+angular.module('optionLab').controller('decideCtrl', ['$scope', '$state', 'decideService', function($scope, $state, decideService){
 
-//decision object assembly - this will all be changed
+//decision object assembly
 
 $scope.decision = {
     title: ''
@@ -16,24 +16,43 @@ $scope.decision = {
   ]
 };
 
-//finish this
-$scope.calculateChoiceGrade = function (decision){
+var possibleTotal = $scope.decision
 
+//calculate weighted average for each grade
+$scope.calculateChoiceGrade = function (decision){
   for (var i=0; i<decision.choices.length; i++){
     var currentChoice = decision.choices[i];
     var gradeSum = 0;
+    var possibleTotal = 0;
     for (var j=0; j<currentChoice.factorGrades.length; j++){
+      currentChoice.factorGrades[j].weight = decision.factors[j].weight;
 
-      gradeSum += (currentChoice.factorGrades[j].grade * decision.factors[j].weight)
+      gradeSum += (currentChoice.factorGrades[j].grade * decision.factors[j].weight);
 
+      possibleTotal += (currentChoice.factorGrades[j].weight);
     }
-    currentChoice.weightedScore = gradeSum/(currentChoice.factorGrades.length * 100);
+    currentChoice.weightedScore = parseFloat((gradeSum/possibleTotal).toFixed(2));
   }
-  console.log('the final decision object is ' + decision);
-  return decision;
+  console.log(decision);
+  $state.go('decide.results');
 };
 
+//original calc to go back to
+// currentChoice.weightedScore = gradeSum/(currentChoice.factorGrades.length * 100);
 console.log($scope.decision);
+
+//CRUD for backend
+$scope.addDecision = function (){
+  decideService.addDecision($scope.decision);
+}
+
+$scope.editDecision = function (){
+  decideService.editDecision($scope.decision);
+}
+
+$scope.deleteDecision = function (){
+  decideService.deleteDecision($scope.decision);
+}
 
 //slider implementation
 
@@ -53,18 +72,5 @@ $scope.slider = {
         }
     }
 };
-
-//CRUD for backend
-$scope.addDecision = function (){
-  decideService.addDecision($scope.decision);
-}
-
-$scope.editDecision = function (){
-  decideService.editDecision($scope.decision);
-}
-
-$scope.deleteDecision = function (){
-  decideService.deleteDecision($scope.decision);
-}
 
 }]);
