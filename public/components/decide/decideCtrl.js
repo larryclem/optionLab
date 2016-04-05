@@ -5,11 +5,12 @@ $scope.factorTitle = 'Set Factors'
 
 $scope.decision = {};
 $scope.decision.choices = [{}, {}, {}];
-$scope.decision.factors = ['', '', ''];
+$scope.decision.factors = [{facName:'', importance:0}, {facName:'', importance:0}, {facName:'', importance:0}];
 
+$scope
 
 console.log($scope.decision);
-console.log($scope.choices);
+
 //slider implementation
 
 $scope.slider = {
@@ -19,11 +20,11 @@ $scope.slider = {
         ceil:100,
         showSelectionBar: true,
         getSelectionBarColor: function(value) {
-            if (value <= 30)
+            if (value <= 25)
                 return 'red';
-            if (value <= 60)
+            if (value <= 50)
                 return 'orange';
-            if (value <= 90)
+            if (value <= 75)
                 return 'yellow';
             return '#2AE02A';
         }
