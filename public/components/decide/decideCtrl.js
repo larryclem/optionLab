@@ -13,18 +13,18 @@ $scope.decision = {
 };
 
 //finish this
-$scope.calculateChoiceGrade = function (decision){
-
-  for (var i=0; i<decision.choices.length; i++){
-    var gradeSum;
-    decision.choices[i].weightedScore = gradeSum/(decision.choices.factorGrades.length * 100);
-    for (var j=0; j<decision.choices.factorGrades.length; j++){
-    (decision.factorGrades[j].grade * decision.factors[j].weight)
-      += gradeSum;
-    }
-  }
-  return decision;
-};
+// $scope.calculateChoiceGrade = function (decision){
+//
+//   for (var i=0; i<decision.choices.length; i++){
+//     var gradeSum;
+//     decision.choices[i].weightedScore = gradeSum/(decision.choices.factorGrades.length * 100);
+//     for (var j=0; j<decision.choices.factorGrades.length; j++){
+//     (decision.choices.factorGrades[j].grade * decision.factors[j].weight)
+//       += gradeSum;
+//     }
+//   }
+//   return decision;
+// };
 
 console.log($scope.decision);
 
