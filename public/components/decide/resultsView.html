@@ -1,0 +1,7 @@
+<h1>{{decision.title}}</h1>
+
+<h3> Results</h3>
+
+<div ng-repeat="choice in decision.choices | orderBy:'-weightedScore'">
+  <h4>{{choice.choiceName}}</h4><span>  {{choice.weightedScore}}%</span>
+</div>
