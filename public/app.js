@@ -9,10 +9,28 @@ angular.module('optionLab', ['ui.router', 'rzModule'])
         url: '/',
         templateUrl: '/components/landing/landingView.html',
         controller: 'landingCtrl'
+        //landing - about page
+      })
+      .state('signUp', {
+        url: '/signup',
+        templateUrl: '/components/signup/signUpView.html',
+        controller: 'signUpCtrl'
+        //creates user
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: '/components/login/loginView.html',
+        controller: 'loginCtrl'
       })
       .state('dashboard', {
-        url: '/user',
-        templateUrl: '/components/decide/createDecisionView.html'
+        url: '/dashboard',
+        templateUrl: '/components/dashboard/dashboardView.html',
+        controller: 'dashboardCtrl',
+        resolve: {
+          userRef: function(dashboardService, $stateParams ){
+            return dashboardService.getUser();
+          }
+        }
       })
       .state('decide', {
         abstract: true,

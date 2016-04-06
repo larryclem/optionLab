@@ -16,10 +16,16 @@ $scope.decision = {
   ]
 };
 
-//set choices and factors
+//add choices and factors
+$scope.newChoice = {choiceName:'', factorGrades: [{}, {}, {}]};
 $scope.addChoice = function (newChoice){
-  $scope.decision
-}
+  $scope.decision.choices.push(newChoice)
+};
+
+$scope.newFactor = {facName:'', weight:0};
+$scope.addFactor = function (newFactor){
+  $scope.decision.factors.push(newFactor)
+};
 
 //calculate weighted average for options
 $scope.calculateChoiceGrade = function (decision){
@@ -48,7 +54,8 @@ console.log($scope.decision);
 
 //CRUD for backend
 $scope.addDecision = function (){
-  decideService.addDecision($scope.decision);
+  decideService.addDecision($scope.decision)
+  .then
 }
 
 $scope.updateDecision = function (){

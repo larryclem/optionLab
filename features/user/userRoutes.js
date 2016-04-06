@@ -1,8 +1,9 @@
 var userControl = require('./userControl')
 
-module.exports = function (app) {
+module.exports = function (app, passport) {
 	app.route('/users')
 			.post(userControl.createUser)
-	app.route('user/:id')
+		//.get()
+	app.route('users/:id')
 			.get(userControl.getUser)
 }

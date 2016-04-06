@@ -7,7 +7,7 @@
       , passport = require('passport')
       , LocalStrategy = require('passport-local').Strategy;
       , mongoose = require('mongoose')
-      , port = 9333
+      , port = process.env.PORT || 9333
       , mongoUri = 'mongodb://localhost:27017/option-lab';
 
 
@@ -23,26 +23,9 @@
       console.log('Connected to MongoDB at ' + mongoUri);
   });
 
-  //user serialization/deserialization
-  passport.serializeUser(function (user, done) {
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function (user, done) {
-    User.findById(id, function (err, user) {
-        done(err, user);
-    });
-  });
-
   //routes
-  // require('./features/user/userRoutes')(app, passport);
-  // require('./features/decision/decisionRoutes')(app, passport);
-
-  //   app.post('/login',
-  //   passport.authenticate('local', { successRedirect: '/',
-  //                                    failureRedirect: '/login',
-  //                                    failureFlash: true })
-  // );
+  require('./features/user/userRoutes')(app /*passport*/);
+  require('./features/decision/decisionRoutes')(app /*passport*/);
 
   app.listen(port, function() {
       console.log('Listening on ' + port);

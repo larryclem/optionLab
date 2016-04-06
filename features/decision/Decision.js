@@ -3,7 +3,7 @@
   var decisionSchema = new mongoose.Schema({
       title: {type: String, required: true}
     , factors: [{
-        facName: {type: String, required: true}
+        facName: {type: String}
       , weight: {type: Number, max: 100}
     }]
     , choices: [{
@@ -11,7 +11,7 @@
       , weightedScore: {type: Number, max: 100}
       , factorGrades: [{
           facName: {type: String}
-        , grade: {type: Number, required: true, max: 100}
+        , grade: {type: Number, max: 100}
       }]
     }]
   });
