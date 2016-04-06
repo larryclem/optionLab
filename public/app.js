@@ -10,6 +10,10 @@ angular.module('optionLab', ['ui.router', 'rzModule'])
         templateUrl: '/components/landing/landingView.html',
         controller: 'landingCtrl'
       })
+      .state('dashboard', {
+        url: '/user',
+        templateUrl: '/components/decide/createDecisionView.html'
+      })
       .state('decide', {
         abstract: true,
         url: '/decide',

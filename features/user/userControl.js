@@ -7,5 +7,5 @@ exports.createUser = function (req, res){
 
 
 exports.getUser = function (req, res){
-  
+
 };

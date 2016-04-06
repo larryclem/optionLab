@@ -16,7 +16,12 @@ $scope.decision = {
   ]
 };
 
-//calculate weighted average for each grade
+//set choices and factors
+$scope.addChoice = function (newChoice){
+  $scope.decision
+}
+
+//calculate weighted average for options
 $scope.calculateChoiceGrade = function (decision){
   for (var i=0; i<decision.choices.length; i++){
     var currentChoice = decision.choices[i];
@@ -46,13 +51,11 @@ $scope.addDecision = function (){
   decideService.addDecision($scope.decision);
 }
 
-$scope.editDecision = function (){
-  decideService.editDecision($scope.decision);
+$scope.updateDecision = function (){
+  decideService.updateDecision($scope.decision);
 }
 
-$scope.deleteDecision = function (){
-  decideService.deleteDecision($scope.decision);
-}
+
 
 //cycle through options in rateOptions view
 $scope.currentOption = 0;
@@ -84,7 +87,6 @@ $scope.slider = {
     }
 };
 
-
 //sets rate options sliders to 0 on start
 // for (var i=0; i<$scope.decision.choices.length; i++){
 //   var currentChoice = $scope.decision.choices[i];
@@ -103,7 +105,8 @@ var setOptionSliders = function (){
       currentChoice.factorGrades[j].grade = 0;
     }
   }
-}
+};
+
 //cleans up empty factors/options and sets option sliders to 0
 $scope.goRate = function (){
 for (var i=0; i<$scope.decision.choices.length; i++){
@@ -122,6 +125,7 @@ for (var i=0; i<$scope.decision.factors.length; i++){
 }
 setOptionSliders();
 console.log($scope.decision);
+decideService.addDecision;
 $state.go('decide.rateOptions');
 }
 
