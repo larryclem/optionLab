@@ -16,7 +16,7 @@ $scope.decision = {
   ]
 };
 
-//add choices and factors
+//add & remove choices and factors
 $scope.newChoice = {choiceName:'', factorGrades: [{}, {}, {}]};
 $scope.addChoice = function (newChoice){
   $scope.decision.choices.push(newChoice)

@@ -4,8 +4,9 @@
       , cors = require('cors')
       , session = require ('express-session')
       , sessionConfig = require('./config/sessionConfig')
+      , passportConfig = require('./config/passport')
       , passport = require('passport')
-      , LocalStrategy = require('passport-local').Strategy;
+      , LocalStrategy = require('passport-local').Strategy
       , mongoose = require('mongoose')
       , port = process.env.PORT || 9333
       , mongoUri = 'mongodb://localhost:27017/option-lab';
@@ -14,9 +15,9 @@
   app.use(bodyParser.json());
   app.use(cors());
   app.use(express.static(__dirname + '/public'));
-  app.use(express.session(sessionConfig));
+  app.use(session(sessionConfig));
   app.use(passport.initialize());
-  app.use(passport.session());
+  app.use(passport.session(passportConfig));
 
   mongoose.connect(mongoUri);
   mongoose.connection.once('open', function() {

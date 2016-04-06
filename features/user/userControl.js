@@ -19,3 +19,12 @@ exports.getUser = function (req, res){
   	res.send(user);
   });
 };
+
+exports.requireAuth = function(req, res, next) {
+    if (!req.isAuthenticated()) {
+        return res.status(401).end();
+    }
+    console.log("requireAuth done")
+
+    next();
+};

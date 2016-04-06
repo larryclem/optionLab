@@ -1,4 +1,4 @@
-var ctrl = require('./decisionControl')
+var decisionControl = require('./decisionControl')
 
 module.exports = function (app) {
 	app.route('/decisions')
