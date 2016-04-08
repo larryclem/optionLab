@@ -1,14 +1,19 @@
 angular.module('optionLab').service('dashboardService', function($http, $q){
 
 var urlBase = 'http://localhost:9333/user/';
-var urlDuh = 'user/'
-
 
 this.getUser = function (userId){
-  console.log('service call is' + userId)
+  console.log('the user id from the service call is ' + userId)
   var dfd = $q.defer();
-  return $http.get(urlDuh + userId)
-
+  $http.get(urlBase + userId)
+  .then(function (response, err){
+    if(err){
+      dfd.reject(err)
+    }
+    dfd.resolve(response.data)
+    console.log('response from server is', response.data);
+  })
+  return dfd.promise;
 }
 
 });

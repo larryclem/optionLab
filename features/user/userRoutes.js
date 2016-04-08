@@ -5,7 +5,7 @@ module.exports = function (app, passport) {
 			.post(userControl.createUser)
 		//.get()
 	app.route('/user/:id')
-			.get(userControl.getUser)
+			.get(userControl.isLoggedIn, userControl.getUser)
 			// userControl.isLoggedIn,
 	app.route('/login')
 			.post(userControl.loginUser)

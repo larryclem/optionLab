@@ -5,7 +5,7 @@
         username: { type: String, required: true, index: { unique: true } }
       , password: { type: String, required: true }
     , decisions: [{
-  		  type: String
+  		  type: mongoose.Schema.Types.ObjectId
   		, ref: 'Decision'
 	   }]
     , tasks: [{

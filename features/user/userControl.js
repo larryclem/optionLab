@@ -19,7 +19,7 @@ exports.getUser = function (req, res){
   	if(err){
   		return res.status(500).send(err);
   	}
-    console.log(user);
+    console.log('the user to send is' + user);
   	res.send(user);
   });
 };
