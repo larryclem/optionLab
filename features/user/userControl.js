@@ -11,7 +11,7 @@ exports.createUser = function (req, res){
     // .redirect('/dashboard');
   });
 };
-
+// req.session.user._id or req.params.id
 exports.getUser = function (req, res){
   User.findById(req.session.user._id)
     .populate('decisions')

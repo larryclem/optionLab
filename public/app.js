@@ -32,7 +32,6 @@ angular.module('optionLab', ['ui.router', 'rzModule'])
         resolve: {
           userRef: ['dashboardService', '$stateParams', function(dashboardService, $stateParams){
             return dashboardService.getUser($stateParams.userIdParam)
-            })
           }]
         }
       })

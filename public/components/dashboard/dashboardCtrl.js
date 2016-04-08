@@ -1,7 +1,6 @@
 angular.module('optionLab').controller('dashboardCtrl', ['$scope', 'dashboardService','$state', 'userRef', function( $scope, dashboardService, $state, $stateParams, userRef){
 
 $scope.user = userRef;
-console.log($scope.user)
 
 $scope.getUser = function (){
   dashboardService.getUser()
