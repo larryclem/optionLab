@@ -6,9 +6,14 @@ module.exports = function (app, passport) {
 		//.get()
 	app.route('/user/:id')
 			.get(userControl.isLoggedIn, userControl.getUser)
-			// userControl.isLoggedIn,
+
 	app.route('/login')
 			.post(userControl.loginUser)
+
+	app.route('/logout')
+			.get(userControl.logoutUser)
+
+
 
 
 	// unused passport routes

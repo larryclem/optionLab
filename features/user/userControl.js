@@ -7,11 +7,10 @@ exports.createUser = function (req, res){
       return res.status(500).send(err);
     }
     req.session.user = user;
-    res.send(user)
-    // .redirect('/dashboard');
+    res.send(user);
   });
 };
-// req.session.user._id or req.params.id
+
 exports.getUser = function (req, res){
   User.findById(req.session.user._id)
     .populate('decisions')
@@ -47,7 +46,7 @@ exports.isLoggedIn = function (req, res, next) {
     User.findOne({username: req.session.user.username}, function (err, user){
       if (!user) {
         req.session.reset();
-        res.redirect('/login');
+        res.redirect('/');
       }
       else {
         next();
@@ -55,9 +54,17 @@ exports.isLoggedIn = function (req, res, next) {
     });
   }
   else {
-    res.redirect('/login');
+    res.redirect('/');
   }
 };
+
+exports.logoutUser = function (req, res){
+  req.session.destroy();
+  res.redirect('/');
+}
+
+
+
 
 //unused passport middleware function
 
