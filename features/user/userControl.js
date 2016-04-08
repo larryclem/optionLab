@@ -6,26 +6,67 @@ exports.createUser = function (req, res){
     if(err){
       return res.status(500).send(err);
     }
-    res.send(user);
+    req.session.user = user;
+    res.send(user)
+    // .redirect('/dashboard');
   });
 };
 
-
 exports.getUser = function (req, res){
-  User.findById(req.params.id, function (err, user){
+  User.findById(req.session.user._id)
+    .populate('decisions')
+    .exec(function (err, user){
   	if(err){
   		return res.status(500).send(err);
   	}
+    console.log(user);
   	res.send(user);
   });
 };
 
-exports.requireAuth = function (req, res, next) {
+exports.loginUser = function (req, res){
+  User.findOne({username: req.body.username}, function (err, user){
+    if(!user){
+      req.flash('loginMessage', 'Invalid email or password.');
+      return res.status(404).send(err);
+    }
+    else if (req.body.password === user.password){
+        req.session.user = user;
+        res.send(user);
+        // res.redirect('/dashboard');
+      }
+    else {
+      req.flash('loginMessage', 'Invalid email or password.');
+      return res.status(404).send(err);
+    }
+  });
+};
 
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
+exports.isLoggedIn = function (req, res, next) {
+  if(req.session && req.session.user){
+    User.findOne({username: req.session.user.username}, function (err, user){
+      if (!user) {
+        req.session.reset();
+        res.redirect('/login');
+      }
+      else {
+        next();
+      }
+    });
+  }
+  else {
+    res.redirect('/login');
+  }
+};
 
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-}
+//unused passport middleware function
+
+// exports.requireAuth = function (req, res, next) {
+//
+//     // if user is authenticated in the session, carry on
+//     if (req.isAuthenticated())
+//         return next();
+//
+//     // if they aren't redirect them to the home page
+//     res.redirect('/');
+// }

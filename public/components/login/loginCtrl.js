@@ -4,10 +4,12 @@ angular.module('optionLab').controller('loginCtrl', ['$scope', '$state', '$http'
 
   $scope.loginUser = function (){
     var userCredentials = {username: $scope.username, password: $scope.password};
-    console.log(userCredentials);
     $http.post(urlBase, userCredentials)
-    .success(function (response, status){
-      $scope.user = response.data;
+      .then(function (response){
+        var user = response.data;
+        $scope.username=null;
+        $scope.password=null;
+        $state.go('dashboard', {userIdParam: user._id})
     })
   }
 

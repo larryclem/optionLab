@@ -2,25 +2,28 @@
   var bcrypt   = require('bcrypt-nodejs');
 
   var userSchema = new mongoose.Schema({
-      local: {
         username: { type: String, required: true, index: { unique: true } }
       , password: { type: String, required: true }
-      }
     , decisions: [{
   		  type: String
   		, ref: 'Decision'
 	   }]
+    , tasks: [{
+        type: String
+      , ref: 'Task'
+    }]
   });
 
-  // generating a hash
-userSchema.methods.generateHash = function(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
+module.exports = mongoose.model('User', userSchema);
 
-// checking if password is valid
-userSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.local.password);
-};
+// unused passport methods
 
-
-  module.exports = mongoose.model('User', userSchema);
+// // generating a hash
+// userSchema.methods.generateHash = function(password) {
+//     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+// };
+//
+// // checking if password is valid
+// userSchema.methods.validPassword = function(password) {
+//     return bcrypt.compareSync(password, this.local.password);
+// };

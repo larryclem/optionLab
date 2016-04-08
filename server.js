@@ -3,6 +3,7 @@
       , morgan = require('morgan')
       , bodyParser = require('body-parser')
       , cors = require('cors')
+      , cookieParser = require('cookie-parser')
       , session = require ('express-session')
       , sessionConfig = require('./config/sessionConfig')
       , passport = require('passport')
@@ -15,6 +16,7 @@
   app.use(bodyParser.json());
   app.use(cors());
   app.use(express.static(__dirname + '/public'));
+  app.use(cookieParser());
   app.use(session(sessionConfig));
   app.use(passport.initialize());
   app.use(passport.session());
@@ -26,7 +28,7 @@
   });
 
   //routes
-  require('./features/user/userRoutes')(app passport);
+  require('./features/user/userRoutes')(app, passport);
   require('./features/decision/decisionRoutes')(app /*passport*/);
 
   //passport config

@@ -15,21 +15,25 @@ angular.module('optionLab', ['ui.router', 'rzModule'])
         url: '/signup',
         templateUrl: '/components/signup/signUpView.html',
         controller: 'signUpCtrl'
-        //creates user
+        //posts user object with username/password to
       })
       .state('login', {
         url: '/login',
         templateUrl: '/components/login/loginView.html',
         controller: 'loginCtrl'
+        //posts object with username / password
       })
       .state('dashboard', {
         url: '/dashboard',
         templateUrl: '/components/dashboard/dashboardView.html',
         controller: 'dashboardCtrl',
+        params: {userIdParam: null},
+        //resolve needs to get single user and populate decisions of that user
         resolve: {
-          userRef: function(dashboardService, $stateParams ){
-            return dashboardService.getUser();
-          }
+          userRef: ['dashboardService', '$stateParams', function(dashboardService, $stateParams){
+            return dashboardService.getUser($stateParams.userIdParam)
+            })
+          }]
         }
       })
       .state('decide', {

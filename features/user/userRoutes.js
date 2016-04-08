@@ -1,27 +1,32 @@
 var userControl = require('./userControl')
 
 module.exports = function (app, passport) {
-	app.route('/users')
+	app.route('/signup')
 			.post(userControl.createUser)
 		//.get()
-	app.route('/users/:id')
-			.get(userControl.requireAuth, userControl.getUser)
+	app.route('/user/:id')
+			.get(userControl.getUser)
+			// userControl.isLoggedIn,
+	app.route('/login')
+			.post(userControl.loginUser)
 
-	app.post('/login',
-			passport.authenticate('local-login', {
-			  successRedirect: '/dashboard',
-			  failureRedirect: '/login',
-			  failureFlash: true,
-			  successFlash: 'Welcome!'
-			  })
-			);
 
-	app.post('/signup',
-			passport.authenticate('local-signup', {
-			  successRedirect: '/dashboard',
-			  failureRedirect: '/signup',
-			  failureFlash: true,
-			  successFlash: 'Welcome!'
-			  })
-			);
+	// unused passport routes
+	// app.post('/login',
+	// 		passport.authenticate('local-login', {
+	// 		  successRedirect: '/dashboard',
+	// 		  failureRedirect: '/login',
+	// 		  failureFlash: true,
+	// 		  successFlash: 'Welcome!'
+	// 		  })
+	// 		);
+	//
+	// app.post('/signup',
+	// 		passport.authenticate('local-signup', {
+	// 		  successRedirect: '/dashboard',
+	// 		  failureRedirect: '/signup',
+	// 		  failureFlash: true,
+	// 		  successFlash: 'Welcome!'
+	// 		}), function (req, res)
+	// 		);
 }

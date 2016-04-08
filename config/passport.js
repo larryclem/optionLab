@@ -1,4 +1,4 @@
-var User = require('./User');
+var User = require('../features/user/User');
 var LocalStrategy   = require('passport-local').Strategy;
 
 module.exports = function(passport){
@@ -9,7 +9,7 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (user, done) {
-  User.findById(id, function (err, user) {
+  User.findById(user.id, function (err, user) {
       done(err, user);
   });
 });
