@@ -61,10 +61,6 @@ $scope.updateDecision = function (){
   decideService.updateDecision($scope.decision);
 }
 
-//original calc to go back to
-// currentChoice.weightedScore = gradeSum/(currentChoice.factorGrades.length * 100);
-// console.log($scope.decision);
-
 //cycle through options in rateOptions view
 $scope.currentOption = 0;
 
@@ -94,15 +90,6 @@ $scope.slider = {
         }
     }
 };
-
-//sets rate options sliders to 0 on start
-// for (var i=0; i<$scope.decision.choices.length; i++){
-//   var currentChoice = $scope.decision.choices[i];
-//
-//   for (var j=0; j<currentChoice.factorGrades.length; j++){
-//     currentChoice.factorGrades[j].grade = 0;
-//   }
-// }
 
 //sets option sliders to 0; used in goRate();
 var setOptionSliders = function (){
@@ -136,5 +123,18 @@ console.log($scope.decision);
 // decideService.addDecision; maybe do this here later.
 $state.go('decide.rateOptions');
 }
+
+//sets rate options sliders to 0 on start
+// for (var i=0; i<$scope.decision.choices.length; i++){
+//   var currentChoice = $scope.decision.choices[i];
+//
+//   for (var j=0; j<currentChoice.factorGrades.length; j++){
+//     currentChoice.factorGrades[j].grade = 0;
+//   }
+// }
+
+//original calc to go back to for calculateChoiceGrade;
+// currentChoice.weightedScore = gradeSum/(currentChoice.factorGrades.length * 100);
+// console.log($scope.decision);
 
 }]);
