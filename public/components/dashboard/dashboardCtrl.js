@@ -1,9 +1,11 @@
-angular.module('optionLab').controller('dashboardCtrl', ['$scope', 'dashboardService', 'userRef', function( $scope, dashboardService, userRef){
+angular.module('optionLab').controller('dashboardCtrl', ['$scope', 'dashboardService', 'userData', function( $scope, dashboardService, userData){
 
-$scope.user = userRef;
-console.log('the user on scope will be ' , userRef);
+$scope.user = userData;
+$scope.decisions = userData.decisions;
+
+console.log('the user on scope will be ' , userData);
 setTimeout(function (){
-  console.log('the user on scope after 2 secs will be ' , userRef)
+  console.log('the user on scope after 2 secs will be ' , userData)
 }, 2000)
 
 // $scope.getUser = function (){

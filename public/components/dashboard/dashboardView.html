@@ -1,1 +1,12 @@
 <h1> Welcome {{user.username}} </h1>
+</br>
+<a ui-sref="decide.create"> Make a Decision </a>
+</br>
+<h3>My decisions</h3>
+<ul>
+  <li ng-repeat="decision in decisions">{{decision.title}}
+    <div ng-repeat="choice in decision.choices | orderBy:'-weightedScore'">
+      <h4>{{choice.choiceName}}</h4><span>  {{choice.weightedScore}}%</span>
+    </div>
+  </li>
+</ul>

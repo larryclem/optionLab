@@ -1,4 +1,5 @@
 var Decision = require('./Decision')
+var User = require('../user/User')
 var exports = module.exports = {};
 
 exports.createDecision = function (req, res){
@@ -6,7 +7,16 @@ exports.createDecision = function (req, res){
     if(err){
       return res.status(500).send(err);
     }
-    res.send(decision);
+    User.findById(req.session.user._id, function (err, user){
+      user.decisions.push(decision._id);
+      user.save(function(error, savedUser){
+        console.log('the updated user is ', savedUser)
+        if(error){
+          return res.status(500).send(err);
+        }
+        res.send(decision);
+      })
+    })
   });
 };
 

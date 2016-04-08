@@ -1,4 +1,4 @@
-angular.module('optionLab').controller('decideCtrl', ['$scope', '$state', 'decideService', function($scope, $state, decideService){
+angular.module('optionLab').controller('decideCtrl', ['$scope', 'decideService', '$state', function($scope, decideService, $state){
 
 //decision object assembly
 
@@ -45,24 +45,25 @@ $scope.calculateChoiceGrade = function (decision){
     currentChoice.weightedScore = parseFloat((gradeSum/possibleTotal).toFixed(2));
   }
   console.log(decision);
-  $state.go('decide.results');
+  addDecision();
+  // $state.go('decide.results');
 };
 
-//original calc to go back to
-// currentChoice.weightedScore = gradeSum/(currentChoice.factorGrades.length * 100);
-console.log($scope.decision);
-
 //CRUD for backend
-$scope.addDecision = function (){
+var addDecision = function (){
   decideService.addDecision($scope.decision)
-  .then
+  .then(function(response){
+    $state.go('decide.results');
+  })
 }
 
 $scope.updateDecision = function (){
   decideService.updateDecision($scope.decision);
 }
 
-
+//original calc to go back to
+// currentChoice.weightedScore = gradeSum/(currentChoice.factorGrades.length * 100);
+// console.log($scope.decision);
 
 //cycle through options in rateOptions view
 $scope.currentOption = 0;
@@ -132,7 +133,7 @@ for (var i=0; i<$scope.decision.factors.length; i++){
 }
 setOptionSliders();
 console.log($scope.decision);
-decideService.addDecision;
+// decideService.addDecision; maybe do this here later.
 $state.go('decide.rateOptions');
 }
 

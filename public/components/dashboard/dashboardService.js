@@ -1,4 +1,4 @@
-angular.module('optionLab').service('dashboardService', function($http, $q){
+angular.module('optionLab').service('dashboardService', ['$http', '$q', function($http, $q){
 
 var urlBase = 'http://localhost:9333/user/';
 
@@ -16,4 +16,4 @@ this.getUser = function (userId){
   return dfd.promise;
 }
 
-});
+}]);

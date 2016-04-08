@@ -30,7 +30,7 @@ angular.module('optionLab', ['ui.router', 'rzModule'])
         params: {userIdParam: null},
         //resolve needs to get single user and populate decisions of that user
         resolve: {
-          userRef: ['dashboardService', '$stateParams', function(dashboardService, $stateParams){
+          userData: ['dashboardService', '$stateParams', function(dashboardService, $stateParams){
             return dashboardService.getUser($stateParams.userIdParam)
           }]
         }
