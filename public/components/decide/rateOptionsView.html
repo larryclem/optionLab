@@ -1,8 +1,9 @@
+<show-nav></show-nav>
 <h1>{{decision.title}}</h1>
 
 <h3>Grade each option against the influencing factors</h3>
 
-<div ng-hide="currentOption !== $index"ng-repeat="(i, choice) in decision.choices track by $index">
+<div ng-hide="currentOption !== $index" ng-repeat="(i, choice) in decision.choices track by $index">
   <h4>{{decision.choices[i].choiceName}}</h4><span>{{$index+1}} of {{decision.choices.length}}</span>
 
   <div ng-repeat="(j, factor) in decision.factors track by $index">
@@ -11,8 +12,9 @@
       rz-slider-options="slider.options"></rzslider>
   </div>
 </div>
+
 <div>
-  <button type="button" class="btn btn-default btn-lg"  ng-click="calculateChoiceGrade(decision)">Decide!</button>
+  <button ng-show="currentOption == decision.choices.length-1"type="button" class="btn btn-default btn-lg"  ng-click="calculateChoiceGrade(decision)">Decide!</button>
 </div>
 
 <button type="button" class="btn btn-default btn-lg"  ng-hide="currentOption == 0" ng-click="previousOption()">Back</button>

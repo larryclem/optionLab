@@ -1,15 +1,90 @@
-
-
-
-
-/* Signup/Login form */
 @import url(http://fonts.googleapis.com/css?family=Roboto:300);
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   background-color:#fff;
   -webkit-font-smoothing: antialiased;
-  font: normal 14px Roboto,arial,sans-serif;
+  font: normal 16px Roboto,arial,sans-serif;
+}
+/* navBar */
+#custo-nav.navbar-static-top .navbar-brand {
+    color: rgba(79, 78, 78, 1);
+    font-size: 36px;
+    padding: 10px 15px;
+    margin-bottom: 5px;
 }
 
+#custo-nav.navbar-static-top .navbar-brand span {
+  margin-left: 0.1em;
+  margin-right:0.03em;
+  position: relative;
+  bottom: 0.05em;
+  color: rgba(141, 214, 46, 1);
+}
+
+#custo-nav.navbar-static-top .navbar-brand span:hover,
+#custo-nav.navbar-static-top .navbar-brand span:focus {
+  color: rgba(141, 214, 46, 1);
+}
+
+#custo-nav.navbar-static-top {
+    font-size: 20px;
+    border-radius: 0px;
+    border-width:0px;
+    height:60px;
+
+}
+
+#custo-nav.navbar-static-top .navbar-header {
+  border-style: none;
+}
+
+#custo-nav .container-fluid {
+  border-bottom: 1px solid #4f4e4e;
+  background-color: #fff;
+}
+
+#custo-nav.navbar-static-top .navbar-nav>li>a {
+    color: #4f4e4e;
+    background-color: #fff;
+    padding-top:21px;
+}
+#custo-nav.navbar-static-top .navbar-nav>li>a:hover,
+#custo-nav.navbar-static-top .navbar-nav>li>a:focus {
+    color: rgba(141, 214, 46, 1);
+    background-color: #4f4e4e;
+    font-weight: bold;
+    cursor: pointer;
+}
+#custo-nav.navbar-static-top .navbar-nav>.active>a,
+#custo-nav.navbar-static-top .navbar-nav>.active>a:hover,
+#custo-nav.navbar-static-top .navbar-nav>.active>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(79, 78, 78, 1);
+}
+#custo-nav.navbar-static-top .navbar-toggle {
+color: #4f4e4e;
+border: 1px solid #4f4e4e;
+}
+#custo-nav.navbar-static-top .navbar-toggle:hover,
+#custo-nav.navbar-static-top .navbar-toggle:focus {
+    background-color: #4f4e4e;
+}
+#custo-nav.navbar-static-top .navbar-toggle .icon-bar {
+    background-color: #4f4e4e;
+}
+#custo-nav.navbar-static-top .navbar-toggle:hover .icon-bar,
+#custo-nav.navbar-static-top .navbar-toggle:focus .icon-bar {
+    background-color: #fff;
+}
+
+/* Signup/Login form */
 .container-login {
     padding: 25px;
     position: fixed;

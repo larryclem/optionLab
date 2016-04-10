@@ -1,0 +1,41 @@
+<!--
+beakers
+<i class="ionicons ion-erlenmeyer-flask"></i>
+
+<i class="ionicons ion-ios-flask-outline"></i>
+
+<i class="ionicons ion-erlenmeyer-flask-bubbles"></i>
+
+sign out
+<i class="ionicons ion-ios-unlocked-outline"></i>
+
+sign in
+<i class="ionicons ion-ios-locked-outline"></i>
+
+register
+
+<i class="ionicons ion-person-add"></i>
+
+dashboard
+<i class="ionicons ion-ios-pulse"></i> -->
+
+<div id="custo-nav" class="navbar navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header"><a class="navbar-brand" ui-sref="landing">optionL<span class="ionicons ion-erlenmeyer-flask"></span>b</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse navbar-menubuilder">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a ui-sref="dashboard">Dashboard</a>
+                </li>
+                <li><a ui-sref="login">Sign in</a>
+                </li>
+                <li><a ui-sref="signUp">Register</a>
+                </li>
+                <li><a ng-click="logout()">Sign out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
