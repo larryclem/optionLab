@@ -1,12 +1,42 @@
 <show-nav></show-nav>
-<h1>{{decision.title}}</h1>
 
-<h3> Results</h3>
+<div class="container-fluid decide-header">
+  <div class="row decision-name"><h1>{{decision.title}}</h1></div>
+  <div class="row">
+    <div class="col-md-10 col-centered text-center">
+      <a ui-sref="decide.factors"><span class="ionicons ion-chevron-left back-arrow"></span></a>
+      <div class="decide-header-text">
+      <h2>RESULTS</h2>
+      <p>[<span class="ionicons ion-ios-pulse"></span>]</p>
+    </div>
+    <a ng-click="calculateChoiceGrade()"><span class="ionicons ion-chevron-right next-arrow"></span></a>
+    </div>
+  </div>
+</div>
 
-<div ng-repeat="choice in decision.choices | orderBy:'-weightedScore'">
-  <h4>{{choice.choiceName}}</h4><span>  {{choice.weightedScore}}%</span>
+<div class="container-fluid decide-form">
+  <div class="row instruct">
+    <div class="container-fluid text-center">
+      <h2>Your options are now ranked based on the influencing factors.</h2>
+    </div>
+  </div>
+
+<div class="container results-contain">
+<div class="row text-center factor-grade-item #winner" ng-repeat="choice in decision.choices | orderBy:'-weightedScore'">
+  <div class="col-md-10 col-centered">
+    <div class="container-fluid">
+      <div class="col-md-6">
+      <h4 class="results-list">{{choice.choiceName}}</h4>
+      </div>
+      <div class=" results-score col-md-6">
+        <h4>  {{choice.weightedScore}}%</h4>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 <button type="button" class="btn btn-default btn-lg"  ui-sref="decide.rateOptions">Back</button>
 
 <button type="button" class="btn btn-default btn-lg"  ui-sref="decide.create">Decide again</button>
+</div>

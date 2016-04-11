@@ -4,7 +4,7 @@
   <div class="row decision-name"><h1>{{decision.title}}</h1></div>
   <div class="row">
     <div class="col-md-10 col-centered text-center">
-      <a ui-sref="decide.create"><span class="ionicons ion-chevron-left back-arrow"></span></a>
+      <a ui-sref="decide.factors"><span class="ionicons ion-chevron-left back-arrow"></span></a>
       <div class="decide-header-text">
       <h2>GRADE OPTIONS</h2>
       <p>[ 1 2 <span id="current-step">3</span> ]</p>
@@ -23,16 +23,23 @@
 
 <div class="container-fluid">
 
-  <div class="row text-center" ng-hide="currentOption !== $index" ng-repeat="(i, choice) in decision.choices track by $index">
+  <div class="row " ng-hide="currentOption !== $index" ng-repeat="(i, choice) in decision.choices track by $index">
     <div class="col-md-10 col-centered">
-      <div class="row">
+      <div class="row option-nav">
+        <h4 class="option-name">{{decision.choices[i].choiceName}}</h4>
         <a ng-click="previousOption()" ng-hide="currentOption == 0"><span class="ionicons ion-chevron-left option-arrow"></span></a>
-        <h4>{{decision.choices[i].choiceName}}</h4><span>{{$index+1}} of {{decision.choices.length}}</span>
+        <span>{{$index+1}} of {{decision.choices.length}} options</span>
         <a ng-click="nextOption()"><span class="ionicons ion-chevron-right option-arrow"></span></a>
+          <button ng-show="currentOption == decision.choices.length-1"type="button" class="btn btn-default btn-lg"  ng-click="calculateChoiceGrade(decision)">Decide!</button>
       </div>
-      <div class="row" ng-repeat="(j, factor) in decision.factors track by $index">
-        <h5>{{decision.factors[j].facName}}</h5>
-        <rzslider rz-slider-model="$parent.decision.choices[i].factorGrades[j].grade"
+      <div class="row factor-grade-item" ng-repeat="(j, factor) in decision.factors track by $index">
+        <div class="col-md-6">
+          <h5 class="fac-grade-name">{{decision.factors[j].facName}}</h5>
+        </div>
+        <div class="col-md-6">
+          <span class="fac-grade"><h2>Grade: {{$parent.decision.choices[i].factorGrades[j].grade}}%</h2></span>
+        </div>
+        <rzslider class="slider-padding" rz-slider-model="$parent.decision.choices[i].factorGrades[j].grade"
             rz-slider-options="slider.options"></rzslider>
       </div>
     </div>
