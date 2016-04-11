@@ -1,15 +1,41 @@
 <show-nav></show-nav>
-<h1>{{decision.title}}</h1>
 
-<h3>Grade each option against the influencing factors</h3>
+<div class="container-fluid decide-header">
+  <div class="row decision-name"><h1>{{decision.title}}</h1></div>
+  <div class="row">
+    <div class="col-md-10 col-centered text-center">
+      <a ui-sref="decide.create"><span class="ionicons ion-chevron-left back-arrow"></span></a>
+      <div class="decide-header-text">
+      <h2>GRADE OPTIONS</h2>
+      <p>[ 1 2 <span id="current-step">3</span> ]</p>
+    </div>
+    <a ng-click="calculateChoiceGrade()"><span class="ionicons ion-chevron-right next-arrow"></span></a>
+    </div>
+  </div>
+</div>
 
-<div ng-hide="currentOption !== $index" ng-repeat="(i, choice) in decision.choices track by $index">
-  <h4>{{decision.choices[i].choiceName}}</h4><span>{{$index+1}} of {{decision.choices.length}}</span>
+<div class="container-fluid decide-form">
+  <div class="row instruct">
+    <div class="container-fluid text-center">
+      <h2>Grade each option against each influencing factor.</h2>
+    </div>
+  </div>
 
-  <div ng-repeat="(j, factor) in decision.factors track by $index">
-  <h5>{{decision.factors[j].facName}}</h5>
-  <rzslider rz-slider-model="$parent.decision.choices[i].factorGrades[j].grade"
-      rz-slider-options="slider.options"></rzslider>
+<div class="container-fluid">
+
+  <div class="row text-center" ng-hide="currentOption !== $index" ng-repeat="(i, choice) in decision.choices track by $index">
+    <div class="col-md-10 col-centered">
+      <div class="row">
+        <a ng-click="previousOption()" ng-hide="currentOption == 0"><span class="ionicons ion-chevron-left option-arrow"></span></a>
+        <h4>{{decision.choices[i].choiceName}}</h4><span>{{$index+1}} of {{decision.choices.length}}</span>
+        <a ng-click="nextOption()"><span class="ionicons ion-chevron-right option-arrow"></span></a>
+      </div>
+      <div class="row" ng-repeat="(j, factor) in decision.factors track by $index">
+        <h5>{{decision.factors[j].facName}}</h5>
+        <rzslider rz-slider-model="$parent.decision.choices[i].factorGrades[j].grade"
+            rz-slider-options="slider.options"></rzslider>
+      </div>
+    </div>
   </div>
 </div>
 
