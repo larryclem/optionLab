@@ -1,7 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+/*@import url(http://fonts.googleapis.com/css?family=Roboto:400);*/
 
 html {
   box-sizing: border-box;
+  font-weight:100;
+  font-family: 'Roboto', sans-serif;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -10,17 +12,25 @@ html {
 body {
   background-color:#fff;
   -webkit-font-smoothing: antialiased;
-  font: normal 16px Roboto,arial,sans-serif;
+  /*font: normal 16px Roboto,arial,sans-serif;*/
+  font-weight:300;
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
 }
 /* navBar */
-#custo-nav.navbar-static-top .navbar-brand {
+
+.navbar-static-top {
+
+background-color:#fff;
+}
+#custo-nav.navbar-default .navbar-brand {
     color: rgba(79, 78, 78, 1);
     font-size: 36px;
     padding: 10px 15px;
     margin-bottom: 5px;
 }
 
-#custo-nav.navbar-static-top .navbar-brand span {
+#custo-nav.navbar-default .navbar-brand span {
   margin-left: 0.1em;
   margin-right:0.03em;
   position: relative;
@@ -28,66 +38,194 @@ body {
   color: rgba(141, 214, 46, 1);
 }
 
-#custo-nav.navbar-static-top .navbar-brand span:hover,
-#custo-nav.navbar-static-top .navbar-brand span:focus {
+#custo-nav.navbar-default .navbar-brand span:hover,
+#custo-nav.navbar-default .navbar-brand span:focus {
   color: rgba(141, 214, 46, 1);
 }
 
-#custo-nav.navbar-static-top {
+#custo-nav.navbar-default {
     font-size: 20px;
     border-radius: 0px;
     border-width:0px;
     height:60px;
-
+    margin-bottom:0;
+    background:transparent;
 }
 
-#custo-nav.navbar-static-top .navbar-header {
-  border-style: none;
-}
+
 
 #custo-nav .container-fluid {
   border-bottom: 1px solid #4f4e4e;
-  background-color: #fff;
+  /*background:transparent;*/
 }
 
-#custo-nav.navbar-static-top .navbar-nav>li>a {
+#custo-nav.navbar-default .navbar-nav>li>a {
     color: #4f4e4e;
     background-color: #fff;
     padding-top:21px;
 }
-#custo-nav.navbar-static-top .navbar-nav>li>a:hover,
-#custo-nav.navbar-static-top .navbar-nav>li>a:focus {
+#custo-nav.navbar-default .navbar-nav>li>a:hover,
+#custo-nav.navbar-default .navbar-nav>li>a:focus {
     color: rgba(141, 214, 46, 1);
     background-color: #4f4e4e;
-    font-weight: bold;
+    font-weight: 900;
     cursor: pointer;
 }
-#custo-nav.navbar-static-top .navbar-nav>.active>a,
-#custo-nav.navbar-static-top .navbar-nav>.active>a:hover,
-#custo-nav.navbar-static-top .navbar-nav>.active>a:focus {
+#custo-nav.navbar-default.navbar-nav>.active>a,
+#custo-nav.navbar-default .navbar-nav>.active>a:hover,
+#custo-nav.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(255, 255, 255, 1);
     background-color: rgba(79, 78, 78, 1);
 }
-#custo-nav.navbar-static-top .navbar-toggle {
+#custo-nav.navbar-default .navbar-toggle {
 color: #4f4e4e;
 border: 1px solid #4f4e4e;
 }
-#custo-nav.navbar-static-top .navbar-toggle:hover,
-#custo-nav.navbar-static-top .navbar-toggle:focus {
+#custo-nav.navbar-default .navbar-toggle:hover,
+#custo-nav.navbar-default .navbar-toggle:focus {
     background-color: #4f4e4e;
 }
-#custo-nav.navbar-static-top .navbar-toggle .icon-bar {
+#custo-nav.navbar-default .navbar-toggle .icon-bar {
     background-color: #4f4e4e;
 }
-#custo-nav.navbar-static-top .navbar-toggle:hover .icon-bar,
-#custo-nav.navbar-static-top .navbar-toggle:focus .icon-bar {
+#custo-nav.navbar-default .navbar-toggle:hover .icon-bar,
+#custo-nav.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #fff;
 }
+
+/*decide */
+
+.decide-header {
+  /*background-color: #cbcfd2;*/
+  background-color:#4f4e4e;
+  /*color: #fff;*/
+  margin-top:-3px;
+
+}
+.decide-header h2{
+  font-size:3em;
+  margin-top:15px;
+  margin-bottom:5px;
+  font-weight:300;
+  /*color:#4f4e4e;*/
+  /*color:#fff;*/
+  color: rgba(141, 214, 46, 1);
+}
+
+.decide-header p {
+  text-align: center;
+  font-size:1.5em;
+  margin-top:0px;
+  /*color: rgba(141, 214, 46, 1);*/
+}
+
+.decide-header-text {
+  color: #fff;
+  font-weight:900;
+  display:inline-block;
+  text-align: center;
+}
+
+.back-arrow {
+  font-size:88px;
+  color: #fff;
+  margin-top:10px;
+  margin-left:0px;
+  margin-right:140px;
+}
+
+.next-arrow {
+  font-size:88px;
+  color: #fff;
+  margin-top:10px;
+  margin-right: 0px;
+  margin-left:140px;
+  cursor: pointer;
+}
+
+.next-arrow:hover, .back-arrow:hover {
+  color: rgba(141, 214, 46, 1);
+}
+
+#current-step {
+  color: rgba(141, 214, 46, 1);
+}
+.decide-footer {
+  /*color: #fff;*/
+  background-color:#4f4e4e;
+  font-weight:900;
+  font-size:2em;
+  text-align: center;
+  color: rgba(141, 214, 46, 1);
+  position:relative;
+  width:100%;
+  bottom:0;
+  margin-bottom:0;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+/*decide form */
+.decide-form {
+/*margin-top: 50px;*/
+}
+
+.instruct h2{
+  font-weight:lighter;
+  font-size:3.3em;
+  /*background-color: #4f4e4e;*/
+  background-color: #cbcfd2;
+  margin:0;
+  padding:5px;
+  /*color:#fff;*/
+  color: #4f4e4e;
+}
+
+.instruct .container-fluid {
+  padding:0;
+  border-top: 1px solid rgba(141, 214, 46, 1);
+  border-bottom: 1px solid #4f4e4e;
+}
+
+#choiceName {
+  background-color: transparent;
+  border-width: 0px 0px 2px 0px;
+  border-color: #4f4e4e;
+  width:50%;
+  margin:10px;
+  min-height:50px;
+  font-size:2em;
+
+}
+
+#ttl {
+  min-height:50px;
+  font-size:3em;
+  background-color: transparent;
+  border-width: 0px 0px 2px 0px;
+  border-color: #4f4e4e;
+  width:75%;
+  margin:10px;
+}
+
+/*Set priorities*/
+#factorName {
+  min-height:50px;
+  font-size:3em;
+  background-color: transparent;
+  border-width: 0px 0px 2px 0px;
+  border-color: #4f4e4e;
+  width:75%;
+  margin:10px;
+}
+
 
 /* Signup/Login form */
 .container-login {
     padding: 25px;
-    position: fixed;
 }
 
 .form-login {
@@ -96,7 +234,7 @@ border: 1px solid #4f4e4e;
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    border-radius: 15px;
+    border-radius: 0px;
     border-color:#d2d2d2;
     border-width: 5px;
     box-shadow:0 1px 0 #cfcfcf;
@@ -107,6 +245,8 @@ border: 1px solid #4f4e4e;
  border-bottom-width:1px;
  padding-bottom:10px;
  text-align: center;
+ font-weight:300;
+ font-size: 2em;
 }
 
 .form-control {

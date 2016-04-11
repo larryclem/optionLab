@@ -1,14 +1,31 @@
 <show-nav></show-nav>
-<h1>{{decision.title}}</h1>
 
-<h3>Prioritize the factors that will inform your decision by rating their importance.</h3>
+<div class="container-fluid decide-header">
+  <div class="row">
+    <div class="col-md-10 col-centered text-center">
+      <a ui-sref="decide.create"><span class="ionicons ion-chevron-left back-arrow"></span></a>
+      <div class="decide-header-text">
+      <h2>SET PRIORITIES</h2>
+      <p>[ 1 <span id="current-step">2</span> 3 ]</p>
+    </div>
+    <a ng-click="goRate()"><span class="ionicons ion-chevron-right next-arrow"></span></a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid decide-form">
+  <div class="row instruct">
+    <div class="container-fluid text-center">
+      <h2>Prioritize the most influential factors affecting the decision.</h2>
+    </div>
+  </div>
 
 <div ng-repeat="(i, factor) in decision.factors track by $index">
-  <label for="factorName">Factor {{$index+1}}:</label>
-  <input type="text" placeholder="factor name" ng-model="decision.factors[i].facName">
+
+  <input id="factorName" type="text" placeholder="Factor name. e.g., 'price'" ng-model="decision.factors[i].facName">
   <h5>Importance</h5>
   <rzslider rz-slider-model="decision.factors[i].weight"
-          rz-slider-options="slider.options" id="factorName"></rzslider>
+          rz-slider-options="slider.options"></rzslider>
 </div>
 
   <button type="button" class="btn btn-default btn-lg"  ui-sref="decide.create">Back</button>

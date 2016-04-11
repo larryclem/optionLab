@@ -1,14 +1,41 @@
 <show-nav></show-nav>
-<h1>Create Decision</h1>
 
-<div class="form-group">
-  <label for="ttl">Name your decision:</label>
-  <input type="text" ng-model="decision.title" id="ttl">
-</div>
 
-<div ng-repeat="(i, choice) in decision.choices track by $index">
-  <label for="choiceName"> Option {{$index+1}}:</label>
-  <input type="text" placeholder="choice name" ng-model="decision.choices[i].choiceName" id="choiceName">
-</div>
 
-<a ui-sref="decide.factors">Next</a>
+  <div class="container-fluid decide-header">
+    <div class="row">
+      <div class="col-md-10 col-centered text-center">
+        <span class="ionicons ion-chevron-left back-arrow"></span>
+        <div class="decide-header-text">
+        <h2>CREATE DECISION</h2>
+        <p>[ <span id="current-step">1</span> 2 3 ]</p>
+      </div>
+      <a ui-sref="decide.factors"><span class="ionicons ion-chevron-right next-arrow"></span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid decide-form">
+    <div class="row instruct">
+      <div class="container-fluid text-center">
+        <h2>Declare your decision. List your options.</h2>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-md-10 col-centered text-center">
+        <form role="form">
+          <div class="form-group">
+            <input type="text" class="text-box" ng-model="decision.title" id="ttl" placeholder="Decision name">
+          </div>
+
+          <div class="form-group" ng-repeat="(i, choice) in decision.choices track by $index">
+            <input type="text" placeholder="Enter option name" ng-model="decision.choices[i].choiceName" id="choiceName">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid decide-footer">
+    <h2> Create Decision</h2>
+  </div>
