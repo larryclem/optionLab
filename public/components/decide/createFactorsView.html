@@ -3,13 +3,19 @@
 <div class="container-fluid decide-header">
   <div class="row decision-name"><h1>{{decision.title}}</h1></div>
   <div class="row">
-    <div class="col-md-10 col-centered text-center">
-      <a ui-sref="decide.create"><span class="ionicons ion-chevron-left back-arrow"></span></a>
-      <div class="decide-header-text">
-      <h2>SET PRIORITIES</h2>
-      <p>[ 1 <span id="current-step">2</span> 3 ]</p>
-    </div>
-    <a ng-click="goRate()"><span class="ionicons ion-chevron-right next-arrow"></span></a>
+    <div class="col-md-10 col-centered">
+      <div class="row text-center">
+        <div class="col-md-3 arrow-box">
+        <a ui-sref="decide.create"><span class="ionicons ion-chevron-left back-arrow"></span><span class="arrow-text"><p>BACK</p></span></a>
+        </div>
+        <div class=" col-md-6 decide-header-text">
+          <h2>SET PRIORITIES</h2>
+          <p>[ 1 <span id="current-step">2</span> 3 ]</p>
+        </div>
+        <div class="col-md-3 arrow-box">
+          <a ng-click="goRate()"><span class="arrow-text"><p>NEXT</p></span><span class="ionicons ion-chevron-right next-arrow"></span></a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -20,6 +26,8 @@
       <h2>Prioritize the most influential factors affecting the decision.</h2>
     </div>
   </div>
+</div>
+
 
 <div class="container-fluid factor-contain">
   <div class=" container" ng-repeat="(i, factor) in decision.factors track by $index">
@@ -32,6 +40,26 @@
     </div>
   </div>
 </div>
+</div>
+
+<div class=" add-remove-items container">
+    <div class="row text-center">
+      <div class="col-md-2 col-centered">
+
+        <a ng-click="addFactor()"class="ionicons ion-plus-circled"></a>
+      <a ng-click="removeFactor()" class="ionicons ion-minus-circled"></a>
+
+    </div>
+</div>
+</div>
+
+
+  <div class="container-fluid decide-footer">
+    <div class="row">
+      <span class="ionicons ion-ios-pulse"></span><span><p>optionLab </p></span><span class="ionicons ion-ios-pulse"></span>
+    </div>
+  </div>
+
 
 <!--ng-click="goRate()"-->
 <!--ui-sref="decide.rateOptions"-->

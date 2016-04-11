@@ -3,13 +3,19 @@
 <div class="container-fluid decide-header">
   <div class="row decision-name"><h1>{{decision.title}}</h1></div>
   <div class="row">
-    <div class="col-md-10 col-centered text-center">
-      <a ui-sref="decide.factors"><span class="ionicons ion-chevron-left back-arrow"></span></a>
-      <div class="decide-header-text">
-      <h2>GRADE OPTIONS</h2>
-      <p>[ 1 2 <span id="current-step">3</span> ]</p>
-    </div>
-    <a ng-click="calculateChoiceGrade()"><span class="ionicons ion-chevron-right next-arrow"></span></a>
+    <div class="col-md-10 col-centered">
+      <div class="row text-center">
+        <div class="col-md-3">
+          <a ui-sref="decide.factors"><span class="ionicons ion-chevron-left back-arrow"></span><span class="arrow-text"><p>BACK</p></span></a>
+        </div>
+        <div class="col-md-6 decide-header-text">
+          <h2>GRADE OPTIONS</h2>
+          <p>[ 1 2 <span id="current-step">3</span> ]</p>
+        </div>
+        <div class="col-md-3">
+          <a ng-show="currentOption == decision.choices.length-1" ng-click="calculateChoiceGrade()"><span class="arrow-text"><p>RESULTS</p></span><span class="ionicons ion-chevron-right next-arrow"></span></a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -30,7 +36,6 @@
         <a ng-click="previousOption()" ng-hide="currentOption == 0"><span class="ionicons ion-chevron-left option-arrow"></span></a>
         <span>{{$index+1}} of {{decision.choices.length}} options</span>
         <a ng-click="nextOption()"><span class="ionicons ion-chevron-right option-arrow"></span></a>
-          <button ng-show="currentOption == decision.choices.length-1"type="button" class="btn btn-default btn-lg"  ng-click="calculateChoiceGrade(decision)">Decide!</button>
       </div>
       <div class="row factor-grade-item" ng-repeat="(j, factor) in decision.factors track by $index">
         <div class="col-md-6">
@@ -45,6 +50,13 @@
     </div>
   </div>
 </div>
+
+<div class="container-fluid decide-footer">
+  <div class="row">
+    <span class="ionicons ion-ios-pulse"></span><span><p>optionLab </p></span><span class="ionicons ion-ios-pulse"></span>
+  </div>
+</div>
+
 
 <div>
   <button ng-show="currentOption == decision.choices.length-1"type="button" class="btn btn-default btn-lg"  ng-click="calculateChoiceGrade(decision)">Decide!</button>

@@ -4,13 +4,19 @@
 
   <div class="container-fluid decide-header">
     <div class="row">
-      <div class="col-md-10 col-centered text-center">
-        <span class="ionicons ion-chevron-left back-arrow"></span>
-        <div class="decide-header-text">
-        <h2>CREATE DECISION</h2>
-        <p>[ <span id="current-step">1</span> 2 3 ]</p>
-      </div>
-      <a ui-sref="decide.factors"><span class="ionicons ion-chevron-right next-arrow"></span></a>
+      <div class="col-md-10 col-centered">
+        <div class="row text-center">
+          <div class="col-md-3">
+
+          </div>
+          <div class=" col-md-6 decide-header-text">
+            <h2>CREATE DECISION</h2>
+            <p>[ <span id="current-step">1</span> 2 3 ]</p>
+          </div>
+          <div class="col-md-3">
+            <a ui-sref="decide.factors"><span class="arrow-text"><p>NEXT</p></span><span class="ionicons ion-chevron-right next-arrow"></span></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,10 +38,24 @@
             <input type="text" placeholder="Enter option name" ng-model="decision.choices[i].choiceName" id="choiceName">
           </div>
         </form>
-      </div>
     </div>
-  </div>
+</div>
+</div>
+
+<div class=" add-remove-items container">
+    <div class="row text-center">
+      <div class="col-md-2 col-centered">
+
+        <a ng-click="addChoice()"class="ionicons ion-plus-circled"></a>
+      <a ng-click="removeChoice()" class="ionicons ion-minus-circled"></a>
+
+    </div>
+</div>
+</div>
+
 
   <div class="container-fluid decide-footer">
-    <h2> Create Decision</h2>
+    <div class="row">
+      <span class="ionicons ion-ios-pulse"></span><span><p>optionLab </p></span><span class="ionicons ion-ios-pulse"></span>
+    </div>
   </div>

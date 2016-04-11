@@ -22,10 +22,18 @@ $scope.addChoice = function (newChoice){
   $scope.decision.choices.push(newChoice)
 };
 
+$scope.removeChoice = function () {
+  $scope.decision.choices.pop();
+}
+
 $scope.newFactor = {facName:'', weight:0};
 $scope.addFactor = function (newFactor){
   $scope.decision.factors.push(newFactor)
 };
+
+$scope.removeFactor = function () {
+  $scope.decision.factors.pop();
+}
 
 //calculate weighted average for options
 $scope.calculateChoiceGrade = function (decision){
